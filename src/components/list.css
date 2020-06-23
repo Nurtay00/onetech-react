@@ -1,0 +1,29 @@
+.module_warp {
+    position: absolute;
+    width: 300px;
+    /* margin: 0 auto; */
+    /* left: 50%;
+    top: 50%; */
+    z-index: 200;
+
+    margin: auto;
+    background: white;
+    padding: 30px;
+}
+.module {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 200;
+}
+.background {
+    background: gray;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    transition: 0.3s ease-in;
+}
