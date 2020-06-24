@@ -1,17 +1,16 @@
 import React from "react";
-
+import "./list.css";
 export default function List(props) {
   const { filter, deleteHandler } = props;
   return (
-    <div>
+    <div className="list-element">
       {filter.map((element, index) => {
         return (
           <div
             className="element0"
             key={index}
             onClick={() => {
-              deleteHandler(element.id);
-              console.log("delete - ");
+              deleteHandler(element);
             }}
           >
             <div style={{ display: "flex" }}>

@@ -3,22 +3,21 @@
   margin: 0 auto;
   cursor: pointer;
 }
+.element0:hover {
+  text-decoration: line-through;
+}
 .warp {
-  /* position: relative; */
-
-  max-width: 300px;
+  max-width: 960px;
   width: 300px;
-  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  padding-top: 100px;
+  align-items: flex-start;
   flex-direction: column;
 }
 
 .search {
   margin: 0 auto;
   border: 1px solid black;
-  width: 250px;
-  margin-bottom: 20px;
 }
 
 .circle {
@@ -28,6 +27,10 @@
   height: 30px;
   border-radius: 25px;
   border: 2px solid black;
+  transition: 0.2s ease-in;
+}
+.circle:hover {
+  background: rgb(235, 235, 235);
 }
 .line {
   border-top: 1px dashed #000;
@@ -35,8 +38,8 @@
 }
 .section {
   height: 100vh;
-  max-width: 960px;
   margin: 0 auto;
   position: relative;
   display: flex;
+  justify-content: center;
 }

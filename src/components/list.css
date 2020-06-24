@@ -25,5 +25,8 @@
     right: 0;
     bottom: 0;
     opacity: 0.7;
-    transition: 0.3s ease-in;
+    transition: 1s ease-in;
+}
+.list-element {
+    margin: 0 auto;
 }

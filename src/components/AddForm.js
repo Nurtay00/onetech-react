@@ -1,7 +1,10 @@
 import React from "react";
 import "./list.css";
 export default function AddForm(props) {
-  var item = {};
+  var item = {
+    name: "",
+    phone: "",
+  };
   return (
     <div className="module_warp">
       <div className="module">
@@ -17,13 +20,15 @@ export default function AddForm(props) {
           name="phone"
           onChange={(event) => (item.phone = event.target.value)}
         />
-
         {console.log("item - ", item)}
         <button
           onClick={() => {
             item.id = Math.round(Math.random() * 1000);
-
-            return props.addHandler(item);
+            if (item.name === "" || item.phone === "") {
+              alert("no phone or name");
+            } else {
+              return props.addHandler(item);
+            }
           }}
         >
           add

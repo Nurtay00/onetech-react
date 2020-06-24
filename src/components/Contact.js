@@ -4,7 +4,7 @@ import Input from "./Input";
 import AddForm from "./AddForm";
 import Background from "./Background";
 
-const users = [
+const usersarr = [
   { name: "Alex", phone: "1234584", id: 1 },
   { name: "Jack", phone: "6846846", id: 2 },
   { name: "Arman", phone: "7984849", id: 3 },
@@ -12,45 +12,46 @@ const users = [
   { name: "Lebron", phone: "6846846", id: 5 },
   { name: "Messi", phone: "7984849", id: 6 },
 ];
-var addBool = false;
 
 export default function Contact() {
-  const [filter, filterSet] = useState(users);
+  const [users, setUsers] = useState(usersarr);
+  const [addBool, setAddBool] = useState(false);
   function filterHandler(event) {
     const ok = event.target.value.toLocaleLowerCase();
-    filterSet(
-      users.filter(
+    setUsers(
+      usersarr.filter(
         (element) =>
           element.name.toLocaleLowerCase().includes(ok) ||
           element.phone.toLocaleLowerCase().includes(ok)
       )
     );
   }
-  function deleteHandler(id) {
-    // const newUsers = [];
-    // users.forEach((item) => (id !== item.id ? newUsers.push(item) : null));
-    // users = newUsers;
+  function deleteHandler(item) {
+    let index = users.indexOf(item);
+    usersarr.splice(index, 1);
+
+    setUsers([...usersarr]);
   }
   function addHandler(item) {
     users.push(item);
-    addBool = false;
-    filterSet(0);
-    console.log("addBool - ", addBool);
+    setAddBool(false);
+    setUsers(users);
   }
 
   return (
     <div className="section">
       <div className="warp">
-        <Input filterHandler={filterHandler} />
-        <List filter={filter} deleteHandler={deleteHandler} />
-        <button onClick={() => (addBool = true)}>add</button>
+        <div
+          style={{ display: "flex", margin: "0 auto", paddingBottom: "20px" }}
+        >
+          <Input filterHandler={filterHandler} />
+          <button onClick={() => setAddBool(true)}>add</button>
+        </div>
+        <List filter={users} deleteHandler={deleteHandler} />
 
-        {!addBool ? null : <AddForm addHandler={addHandler} />}
-
-        {console.log("users - ", users)}
+        {addBool && <AddForm addHandler={addHandler} />}
       </div>
-      {!addBool ? null : <Background />}
-      {console.log("addBool - ", addBool)}
+      {!addBool ? null : <Background setAddBool={setAddBool} />}
     </div>
   );
 }
